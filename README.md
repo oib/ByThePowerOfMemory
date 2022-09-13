@@ -10,11 +10,11 @@ see requirements.txt
  - install python
  - install pysimplegui using the command 
 
-  pip install pysimplegui
+`pip install pysimplegui`
 
 - run the game using:
 
-  python ByThePowerOfMemory.py
+`python ByThePowerOfMemory.py`
 
 ## how to play:
 
@@ -27,3 +27,4 @@ Instead of the buttons also key presses can be used (a,s,d,f).
 
 
 
+This game was created during a python programming course at https://spielend-programmieren.at 
