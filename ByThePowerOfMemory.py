@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import pandas as pd
 
-LAYOUT_GAME = [
+def create_layout_game():
+    LAYOUT_GAME = [
         [
             # sg.Text("match:"),
             sg.Button(
@@ -37,8 +38,11 @@ LAYOUT_GAME = [
             sg.Text("fails: 0", key="fails", font=("Ubuntu", 20)),
         ],
     ]
+    return sg.Window("ByThePowerOfMemory", layout=LAYOUT_GAME,  finalize=True,  return_keyboard_events=True, use_default_focus=False)
 
-LAYOUT_SETTING = [
+def create_layout_settings():
+
+    LAYOUT_SETTING = [
         [sg.Text("Your name:"), sg.Input(default_text="Write your name here!", key="name", enable_events=True)],
         [
             sg.Text("Select your difficulty level:"),
@@ -115,6 +119,7 @@ LAYOUT_SETTING = [
          sg.Button("Cancel")],
         [sg.Canvas(key="statboard1"), sg.Canvas(key="statboard2")],
     ]
+    return sg.Window("Game Settings", layout=LAYOUT_SETTING)
 
 sg.theme("DarkGreen")
 
@@ -366,7 +371,7 @@ def statistic():
         ax.annotate(
             "This Game",
             xy=(times[-1], 80),
-            xytext=(-100, 50),  # xytext=(times[len(times)//2], 50),
+            xytext=(-100, -50),  # xytext=(times[len(times)//2], 50),
             textcoords="offset pixels",
             arrowprops=dict(
                 facecolor="black",
@@ -426,8 +431,9 @@ def statistic_week():
 
 
 def settings():
-    local_layout = LAYOUT_SETTING[:]
-    window = sg.Window(layout=local_layout, title="Settings for Memory Game")
+    #local_layout = LAYOUT_SETTING[:]
+    #window = sg.Window(layout=local_layout, title="Settings for Memory Game")
+    window = create_layout_settings()
     window.finalize()
     # set up disabled attributes
     window["name"].update(value=Game.playername)
@@ -585,7 +591,7 @@ def calculate_grid():
     return bl, tr
 
 def game():
-    local_layout = LAYOUT_GAME[:]
+    #local_layout = LAYOUT_GAME[:]
     # create valid colors for this game
     random.shuffle(Game.alle_farben)
     RoundSet.set_farben = Game.alle_farben[: Game.colorsize]
@@ -599,13 +605,14 @@ def game():
 
     # -----------------------------------
     # Create the Window
-    window = sg.Window(
-        "Memory Trainer",
-        layout=local_layout,
-        finalize=True,
-        return_keyboard_events=True,
-        use_default_focus=False,
-    )
+    #window = sg.Window(
+    #    "Memory Trainer",
+    #    layout=local_layout,
+    #    finalize=True,
+    #    return_keyboard_events=True,
+    #    use_default_focus=False,
+    #)
+    window = create_layout_game()
     window["canvas"].change_coordinates(bl, tr)
     # Event Loop to process "events" and get the "values" of the inputs
     #stoppuhr = time.time()
