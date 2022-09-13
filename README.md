@@ -25,5 +25,11 @@ Instead of the buttons also key presses can be used (a,s,d,f).
 
 ## Screenshots
 ![menu](./screenshots/menu.png)
+![gameplay1](./screenshots/gameplay1.png)
+![gameplay2](./screenshots/gameplay2.png)
+![statsdetail](./screenshots/statsdetail.png)
+![statshistory](./screenshots/statshistory.png)
+
+## Notes
 
 This game was created during a python programming course at https://spielend-programmieren.at 
